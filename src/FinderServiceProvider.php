@@ -52,10 +52,9 @@ class FinderServiceProvider extends ServiceProvider
 
     /**
      * [defineRoute description]
-     * @param  Router $router [description]
-     * @return [type]         [description]
+     * @return [type] [description]
      */
-    private function defineRoute(Router $router)
+    private function defineRoute()
     {
         $router = $this->app['router'];
         $router->get('finder/img/{path}', function(Server $server, Request $request, $path) {
