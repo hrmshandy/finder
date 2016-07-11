@@ -1,0 +1,20 @@
+{
+    "name": "hrmshandy/finder",
+    "description": "Finder",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Shandy Hermawan",
+            "email": "hrm.shandy05@gmail.com"
+        },
+    ],
+    "require": {
+    	"php": ">=5.5.9",
+        "league/glide": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hrmshandy\\Finder": "src"
+        }
+    },
+}
