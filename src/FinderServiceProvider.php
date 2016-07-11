@@ -25,10 +25,10 @@ class FinderServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register(Router $router)
+    public function register()
     {
         $this->glideServer();
-        $this->defineRoute($router);
+        $this->defineRoute();
     }
 
     /**
@@ -57,7 +57,8 @@ class FinderServiceProvider extends ServiceProvider
      */
     private function defineRoute(Router $router)
     {
-         $router->get('finder/img/{path}', function(Server $server, Request $request, $path) {
+        $router = $this->app['router'];
+        $router->get('finder/img/{path}', function(Server $server, Request $request, $path) {
 
             $server->outputImage($path, $request->all());
 
