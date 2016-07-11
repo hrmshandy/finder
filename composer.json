@@ -6,7 +6,7 @@
         {
             "name": "Shandy Hermawan",
             "email": "hrm.shandy05@gmail.com"
-        },
+        }
     ],
     "require": {
     	"php": ">=5.5.9",
