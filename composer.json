@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Hrmshandy\\Finder": "src"
+            "Hrmshandy\\Finder\\": "src"
         }
     }
 }
