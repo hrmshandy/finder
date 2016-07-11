@@ -3,6 +3,7 @@
 namespace Hrmshandy\Finder;
 
 use League\Glide\Server;
+use Illuminate\Routing\Router;
 use League\Glide\ServerFactory;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Filesystem\Filesystem;
