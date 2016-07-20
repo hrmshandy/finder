@@ -10,7 +10,9 @@
     ],
     "require": {
     	"php": ">=5.5.9",
-        "league/glide": "^1.0"
+        "league/glide": "^1.0",
+        "dflydev/apache-mime-types": "^1.0",
+        "danielstjules/stringy": "^2.3"
     },
     "autoload": {
         "psr-4": {

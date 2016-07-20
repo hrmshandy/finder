@@ -18,7 +18,15 @@ class FinderServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->publishes([
+            __DIR__.'/../resources/config/finder.php' => config_path('finder.php'),
+        ], 'config');
+
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'finder');
+
+        $this->publishes([
+            __DIR__.'/../resources/views' => resource_path('views/vendor/finder'),
+        ]);
     }
 
     /**
@@ -29,7 +37,7 @@ class FinderServiceProvider extends ServiceProvider
     public function register()
     {
         $this->glideServer();
-        $this->defineRoute();
+        $this->registerRoute();
     }
 
     /**
@@ -55,13 +63,16 @@ class FinderServiceProvider extends ServiceProvider
      * [defineRoute description]
      * @return [type] [description]
      */
-    private function defineRoute()
+    private function registerRoute()
     {
         $router = $this->app['router'];
-        $router->get('finder/img/{path}', function(Server $server, Request $request, $path) {
 
-            $server->outputImage($path, $request->all());
-
-        })->where('path', '[A-Za-z0-9\/\.\-\_]+');
+        $router->group(['namespace' => 'Hrmshandy\Finder\Controllers'], function($router){
+            $router->get('finder/file/{path}', 'FinderController@downloadFile')->where('folder', '[A-Za-z0-9\/\.\-\_]+');
+            $router->post('finder/file', 'FinderController@saveFile');
+            $router->delete('finder/file/{path}', 'FinderController@deleteFile')->where('path', '[A-Za-z0-9\/\.\-\_]+');
+            $router->get('finder/images/{path}', 'FinderController@getFile')->where('path', '[A-Za-z0-9\/\.\-\_]+');
+            $router->get('finder/{folder?}', 'FinderController@index')->where('folder', '[A-Za-z0-9\/\.\-\_]+');
+        });
     }
 }
