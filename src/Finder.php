@@ -71,8 +71,9 @@ class Finder
         }
         $files = [];
         foreach ($this->fileSystem->files($folder) as $path) {
+            $dotfile = strpos($path, '.');
             $excludeFile = config('finder.exclude.files');
-            if(!in_array($path, $excludeFile)){
+            if($dotfile !== 0 and !in_array($path, $excludeFile)){
                 $files[] = $this->fileDetails($path);
             }
         }
